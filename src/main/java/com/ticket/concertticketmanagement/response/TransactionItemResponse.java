@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TransactionItemResponse {
+  private Long id;
   private Long transactionId;
   private Long category;
   private int total;

@@ -20,6 +20,7 @@ public class TransactionSerializer {
   public TransactionResponse constructResponse() {
     TransactionResponse response = new TransactionResponse();
 
+    response.setId(transaction.getId());
     response.setConcertId(transaction.getConcertId());
     response.setState(transaction.getState().getCode());
     response.setTotal(transaction.getTotal());
@@ -33,6 +34,7 @@ public class TransactionSerializer {
     for (TransactionItem it: items) {
       TransactionItemResponse item = new TransactionItemResponse();
 
+      item.setId(it.getId());
       item.setCategory(it.getConcertCategoryId()); // TO DO : improve to return as string
       item.setTransactionId(it.getTransactionId());
       item.setTotal(it.getTotal());
