@@ -14,6 +14,7 @@ public class UserSerializer {
   public UserResponse constructResponse() {
     UserResponse response = new UserResponse();
 
+    response.setId(user.getId());
     response.setFullName(user.getName());
     response.setPhoneNumber(user.getPhoneNumber());
     response.setEmail(user.getEmail());
@@ -23,5 +24,4 @@ public class UserSerializer {
 
     return response;
   }
-
 }

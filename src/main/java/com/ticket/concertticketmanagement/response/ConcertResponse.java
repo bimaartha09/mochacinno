@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ConcertResponse {
+  private Long id;
   private String name;
   private String description;
   private String responsibleName;

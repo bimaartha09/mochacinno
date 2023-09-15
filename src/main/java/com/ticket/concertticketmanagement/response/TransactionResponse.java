@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TransactionResponse {
+  private Long id;
   private Long userId;
   private Long concertId;
   private String state;

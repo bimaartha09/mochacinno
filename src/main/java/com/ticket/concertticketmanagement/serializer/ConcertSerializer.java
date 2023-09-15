@@ -14,6 +14,7 @@ public class ConcertSerializer {
   public ConcertResponse constructResponse() {
     ConcertResponse response = new ConcertResponse();
 
+    response.setId(concert.getId());
     response.setName(concert.getName());
     response.setDescription(concert.getDescription());
     response.setResponsibleName(concert.getResponsibleName());
