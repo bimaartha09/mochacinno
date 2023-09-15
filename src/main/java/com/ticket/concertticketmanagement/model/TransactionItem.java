@@ -16,7 +16,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "concerts")
+@Table(name = "transaction_items")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
 public class TransactionItem implements Serializable {

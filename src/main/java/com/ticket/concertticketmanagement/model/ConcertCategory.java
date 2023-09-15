@@ -16,7 +16,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "concerts")
+@Table(name = "concert_categories")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
 public class ConcertCategory implements Serializable {
@@ -31,7 +31,7 @@ public class ConcertCategory implements Serializable {
   @Column(nullable = false)
   private String categoryName;
 
-  @Column
+  @Column(nullable = false)
   private int price;
 
   @Column(nullable = false)
@@ -49,4 +49,9 @@ public class ConcertCategory implements Serializable {
   @Temporal(TemporalType.TIMESTAMP)
   @LastModifiedDate
   private Date updatedAt;
+
+  @Override
+  public String toString() {
+    return super.toString();
+  }
 }

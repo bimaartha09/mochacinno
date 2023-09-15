@@ -23,17 +23,17 @@ public class UserController {
   UserService userService;
 
   @GetMapping("/users")
-  public List<UserResponse> getAllConcerts() {
+  public List<UserResponse> getAllUsers() {
     return userService.getAllUser();
   }
 
   @GetMapping("/users/{id}")
-  public UserResponse getConcertByID(@PathVariable(value = "id") Long userID) {
+  public UserResponse getUserByID(@PathVariable(value = "id") Long userID) {
     return userService.getUserByID(userID);
   }
 
   @PostMapping("/users")
-  public UserResponse createConcert(@Validated @RequestBody UserRequest request){
+  public UserResponse createUser(@Validated @RequestBody UserRequest request){
     return userService.createUser(request);
   }
 }

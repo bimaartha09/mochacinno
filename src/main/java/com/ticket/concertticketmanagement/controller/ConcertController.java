@@ -1,5 +1,6 @@
 package com.ticket.concertticketmanagement.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class ConcertController {
   }
 
   @PostMapping("/concerts")
-  public ConcertResponse createConcert(@Validated @RequestBody ConcertRequest request){
+  public ConcertResponse createConcert(@Validated @RequestBody ConcertRequest request) throws Exception{
     return concertService.createConcert(request);
   }
 

@@ -41,6 +41,8 @@ public class UserService {
     user.setPhoneNumber(request.getPhone());
     user.setActive(true);
 
+    user = userRepository.save(user);
+
     UserSerializer serializer = new UserSerializer();
     serializer.setUser(user);
 
