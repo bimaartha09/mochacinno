@@ -1,6 +1,8 @@
 package com.ticket.concertticketmanagement.service;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +25,17 @@ public class ConcertService {
 
   @Autowired
   ConcertRepository concertRepository;
+
+  @Autowired
   ConcertCategoryRepository concertCategoryRepository;
 
-  public ConcertResponse createConcert(ConcertRequest request) {
-    long timeNow = System.currentTimeMillis();
-    long timeStartTime = Date.valueOf(request.getStartTime()).getTime();
+  public ConcertResponse createConcert(ConcertRequest request) throws Exception {
+    System.out.println("request : " + request.getStartTime());
 
-    if (timeNow > timeStartTime) {
+    LocalDateTime timeNow = LocalDateTime.now();
+    LocalDateTime dateTime = LocalDateTime.parse(request.getStartTime());
+
+    if (timeNow.isAfter(dateTime)) {
       throw new InvalidRequestException("start_time");
     }
 
@@ -38,7 +44,7 @@ public class ConcertService {
 
     concert.setName(request.getConcertName());
     concert.setDescription(request.getNotes());
-    concert.setStartTime(Date.valueOf(request.getStartTime()));
+    concert.setStartTime(Date.from(timeNow.atZone(ZoneId.systemDefault()).toInstant()));
     concert.setCapacity(request.getCapacity());
     concert.setAvailableCapacity(request.getCapacity());
     concert.setResponsibleName(request.getResponsibleName());
@@ -56,6 +62,8 @@ public class ConcertService {
       category.setCapacity(cc.getCapacity());
       category.setAvailableCapacity(cc.getCapacity());
       category.setPrice(cc.getPrice());
+
+      System.out.println("category = " + category.toString());
 
       ccList.add(category);
     }

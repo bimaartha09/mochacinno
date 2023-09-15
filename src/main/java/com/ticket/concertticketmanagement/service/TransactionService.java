@@ -24,8 +24,14 @@ public class TransactionService {
 
   @Autowired
   TransactionRepository transactionRepository;
+
+  @Autowired
   TransactionItemRepository transactionItemRepository;
+
+  @Autowired
   ConcertRepository concertRepository;
+
+  @Autowired
   ConcertCategoryRepository concertCategoryRepository;
 
   public TransactionResponse createTransaction(TransactionRequest request) {
@@ -69,7 +75,7 @@ public class TransactionService {
     List<TransactionResponse> response = new ArrayList<>();
 
     for (Transaction trx: trxList) {
-      List<TransactionItem> items = transactionItemRepository.findByTransactionId();
+      List<TransactionItem> items = transactionItemRepository.findByTransactionId(trx.getId());
 
       TransactionSerializer serializer = new TransactionSerializer();
       serializer.setTransaction(trx);
@@ -85,7 +91,7 @@ public class TransactionService {
     Transaction trx = transactionRepository.findById(transactionId)
       .orElseThrow(() -> new NotFoundException("transactionId", transactionId));
 
-    List<TransactionItem> items = transactionItemRepository.findByTransactionId();
+    List<TransactionItem> items = transactionItemRepository.findByTransactionId(trx.getId());
 
     TransactionSerializer serializer = new TransactionSerializer();
     serializer.setTransaction(trx);

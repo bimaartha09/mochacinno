@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TransactionItemRepository extends JpaRepository<TransactionItem, Long> {
-  List<TransactionItem> findByTransactionId();
+  List<TransactionItem> findByTransactionId(long transactionId);
 }

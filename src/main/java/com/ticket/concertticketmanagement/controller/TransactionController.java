@@ -28,12 +28,12 @@ public class TransactionController {
   }
 
   @GetMapping("/transactions/{id}")
-  public TransactionResponse getConcertByID(@PathVariable(value = "id") Long transactionId) {
+  public TransactionResponse getTransactionByID(@PathVariable(value = "id") Long transactionId) {
     return null;
   }
 
-  @PostMapping("/concerts")
-  public TransactionResponse createConcert(@Validated @RequestBody TransactionRequest request){
+  @PostMapping("/transactions")
+  public TransactionResponse createTransaction(@Validated @RequestBody TransactionRequest request){
     return transactionService.createTransaction(request);
   }
 

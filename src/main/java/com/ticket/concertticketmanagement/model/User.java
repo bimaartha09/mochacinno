@@ -5,8 +5,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -42,11 +42,11 @@ public class User implements Serializable {
 
   @Column(nullable = false, updatable = false)
   @Temporal(TemporalType.TIMESTAMP)
-  @CreatedDate
+  @CreationTimestamp
   private Date createdAt;
 
   @Column(nullable = false)
   @Temporal(TemporalType.TIMESTAMP)
-  @LastModifiedDate
+  @UpdateTimestamp
   private Date updatedAt;
 }
